@@ -1,0 +1,17 @@
+<h1>Edit Shrkified Link</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@link) do |f| %>
+
+			<%= f.label :url, "Full URL" %>
+			<%= f.text_field :url %>
+			
+			<%= f.label :vanity_url, "Custom URL (Optional)" %>
+			<%= f.text_field :vanity_url %>
+			</br>
+
+			<%= f.submit "Shrkify", 	class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

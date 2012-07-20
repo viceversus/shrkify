@@ -1,18 +1,20 @@
-<h1>Sharkify your link!</h1>
-
 <%= render :partial => 'error_messages' %>
 
-<div class="row">
-	<div class="span6 offset3">
-		<%= form_for(@link) do |f| %>
-			
-			<%= f.label :enter_url %>
-			<%= f.text_field :url %>
-			
-			<%= f.label :vanity_url %>
-			<%= f.text_field :vanity_url %>
-			
-			<%= f.submit "Sharkify", 	class: "btn btn-large btn-primary" %>
-		<% end %>
+
+<div class="center hero-unit">
+	<h1>Shrkify Your Link!</h1>
+
+	<div class="row">
+		<div class="span6 offset3">
+			<%= form_for(@link) do |f| %>
+
+				<%= f.label :url, "Shrkify a URL" %>
+				<%= f.text_field :url %>
+				
+				</br>
+
+				<%= f.submit "Shrkify", 	class: "btn btn-large btn-primary" %>
+			<% end %>
+		</div>
 	</div>
 </div>

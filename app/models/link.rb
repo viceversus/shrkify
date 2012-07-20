@@ -7,8 +7,7 @@ class Link < ActiveRecord::Base
   validates :url, :presence => true,
                   :uniqueness => true
                   
-  validates :vanity_url, :uniqueness => true,
-                         :format => { :with => /^[\-\w]+$/i } 
+  validates :vanity_url, :format => { :with => /^[\-\w]+$/i } 
                   
   SHARKS = %w{ pavs8 thornton19 marleau12 couture39 clowe29 havlat9 niemi31 burns88 boyle22 vlasic44 demers60 braun61}
 

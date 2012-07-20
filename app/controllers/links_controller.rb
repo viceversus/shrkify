@@ -24,4 +24,18 @@ class LinksController < ApplicationController
   def index
     @links = Link.all
   end
+  
+  def edit
+    @link = Link.find(params[:id])
+  end
+  
+  def update
+    @link = Link.find(params[:id])
+    if @link.update_attributes(params[:link])
+      flash[:messages] = "Link updated successfully!"
+    else
+      flash[:error] = "Update unsucessful!"
+    end
+    redirect_to links_path
+  end
 end

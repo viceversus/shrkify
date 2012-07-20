@@ -1,14 +1,26 @@
-<h1>All Sharkified Links</h1>
+<h1>All Shrkified Links</h1>
 
 <%= render :partial => 'error_messages' %>
 
-<ul class='links'>
-	<% @links.each do |link| %>
-	<li>
-		<%= link.url %> - 
-		<%= link_to "#{root_url}shrk/#{link.short_url}", "#{root_url}shrk/#{link.short_url}" %> - 
-		<%= link.vanity_url %> - 
-		<%= link.visit_count %>
-	</li>
-	<% end %>
-</ul>
+<table class="table table-striped table-bordered">  
+    <thead>  
+      <tr>  
+        <th>Link URL</th>
+        <th>Shrk Link</th>
+        <th>Custom</th>
+        <th>Visit Count</th>
+		<th></th>
+      </tr>
+    </thead>
+	<tbody>
+		<% @links.each do |link| %>
+		<tr>
+			<td><%= link.url %></td>
+			<td><%= link_to "#{root_url}shrk/#{link.short_url}", "#{root_url}shrk/#{link.short_url}" %></td>
+			<td><%= link_to "#{root_url}shrk/#{link.vanity_url}", "#{root_url}shrk/#{link.vanity_url}" %></td>
+			<td><%= link.visit_count %></td>
+			<td><%= link_to 'Edit', edit_link_path(link) %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
