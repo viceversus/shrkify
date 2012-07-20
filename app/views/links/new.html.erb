@@ -1,0 +1,13 @@
+<h1>Sharkify your link!</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@link) do |f| %>
+			
+			<%= f.label :enter_url %>
+			<%= f.text_field :url %>
+			
+			<%= f.submit "Sharkify", 	class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
