@@ -89,3 +89,12 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
   @include box_sizing;
 }
+
+input .span4 {
+  width: 290px;
+}
+
+.edit-box {
+  width: 290px;
+  margin: 0 auto;
+}

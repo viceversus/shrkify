@@ -1,0 +1,5 @@
+<% if link.vanity_url %>
+	<%= link_to "#{root_url}shrk/#{link.vanity_url}", "#{root_url}shrk/#{link.vanity_url}" %>
+<% else %>
+	<%= link_to "Add Custom URL", edit_link_path(link)%>
+<% end %>

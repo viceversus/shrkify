@@ -5,15 +5,12 @@
 	<h1>Shrkify Your Link!</h1>
 
 	<div class="row">
-		<div class="span6 offset3">
+		<div class="center">
 			<%= form_for(@link) do |f| %>
-
-				<%= f.label :url, "Shrkify a URL" %>
-				<%= f.text_field :url %>
-				
-				</br>
-
-				<%= f.submit "Shrkify", 	class: "btn btn-large btn-primary" %>
+				<div class="input-append">
+				<%= f.text_field :url, class: "txtbox span4", id: "appendedInputButton" %>
+				<%= f.submit "Shrkify", class: "btn btn-large btn-info" %>
+				</div>
 			<% end %>
 		</div>
 	</div>
