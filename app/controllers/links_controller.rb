@@ -6,7 +6,7 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(params[:link])
     if @link.save
-      Link.sharkify(@link)
+      Link.sharken(@link)
       redirect_to link_path(@link)
     else
       flash.now[:error] = "Invalid Link"
