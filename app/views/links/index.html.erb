@@ -1,0 +1,14 @@
+<h1>All Sharkified Links</h1>
+
+<%= render :partial => 'error_messages' %>
+
+<ul class='links'>
+	<% @links.each do |link| %>
+	<li>
+		<%= link.url %> - 
+		<%= link_to "#{root_url}shrk/#{link.short_url}", "#{root_url}shrk/#{link.short_url}" %> - 
+		<%= link.vanity_url %> - 
+		<%= link.visit_count %>
+	</li>
+	<% end %>
+</ul>
