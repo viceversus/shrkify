@@ -1,4 +1,6 @@
 class Link < ActiveRecord::Base
+  belongs_to :user
+  
   extend FriendlyId
   friendly_id :vanity_url, :use => :slugged
   

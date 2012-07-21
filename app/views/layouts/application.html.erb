@@ -18,6 +18,14 @@
             <ul class="nav pull-right">
               <li><%= link_to "Home",    root_path %></li>
               <li><%= link_to "Links",   links_path %></li>
+			  <div class="user-header"> 
+			  <% if current_user %>
+			  	<li>Signed in as <%= current_user.name %>
+				<%= link_to "Sign out", signout_path%></li>
+			  <% else %>
+			    <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
+			  <% end %>
+			  <div class="user-header">
             </ul>
           </nav>
         </div>

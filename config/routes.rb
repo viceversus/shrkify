@@ -2,9 +2,12 @@ UrlShortener::Application.routes.draw do
   root :to => "links#new"
   
   resources :links
+  match "/shrk/:short_url" => redirect("/links/%{short_url}"), :as => "shrk"
   
-  match "/:short_url" => redirect("/links/%{short_url}"), :as => "shrk"
-  
+  match "/signup", :to => "users#new"
+  match "/auth/:provider/callback", :to => "sessions#create"
+  match "/auth/failure", to: redirect('/')
+  match "/signout", :to => "sessions#destroy", :as => "signout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -16,9 +16,9 @@
 		<% @links.each do |link| %>
 		<tr>
 			<td><%= link.url %></td>
-			<td><%= link_to "#{root_url}#{link.short_url}", "#{root_url}#{link.short_url}" %></td>
+			<td><%= link_to "#{root_url}shrk/#{link.short_url}", "#{root_url}#{link.short_url}" %></td>
 			<td><% if link.vanity_url %>
-				<%= link_to "#{root_url}#{link.vanity_url}", "#{root_url}#{link.vanity_url}" %>
+				<%= link_to "#{root_url}shrk/#{link.vanity_url}", "#{root_url}#{link.vanity_url}" %>
 			<% else %>
 				<%= link_to "Add Custom URL", edit_link_path(link)%>
 			<% end %></td>
