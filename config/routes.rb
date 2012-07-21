@@ -3,7 +3,7 @@ UrlShortener::Application.routes.draw do
   
   resources :links
   
-  match "/shrk/:short_url" => redirect("/links/%{short_url}"), :as => "sharkify"
+  match "/:short_url" => redirect("/links/%{short_url}"), :as => "shrk"
   
 
   # The priority is based upon order of creation:
