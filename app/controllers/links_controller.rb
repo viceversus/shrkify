@@ -8,7 +8,7 @@ class LinksController < ApplicationController
     if @link.save 
       Link.sharken(@link)
       flash[:messages] = "Your sharkened url is #{root_url}shrk/#{@link.short_url}"
-      redirect_to links_path
+      redirect_to root_path
     else
       flash[:error] = "Please enter a valid link!"
       redirect_to root_path
