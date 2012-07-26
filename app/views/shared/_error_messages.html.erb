@@ -1,0 +1,7 @@
+<%if flash[:messages]%>
+	<div class="alert alert-success"><strong><%=flash[:messages]%></strong></div>
+<%elsif flash[:error]%>
+	<div class="alert alert-error"><%= flash[:error]%></div>
+<%elsif flash[:notice]%>
+	<div class="alert alert-notice"><%= flash[:notice]%></div>
+<%end%>

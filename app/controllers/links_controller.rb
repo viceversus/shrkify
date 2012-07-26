@@ -6,19 +6,17 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(params[:link])
     if @link.save 
-      Link.sharken(@link)
-      flash[:messages] = "Your sharkened url is #{root_url}shrk/#{@link.short_url}"
+      flash[:messages] = "Your sharkened url is #{root_url}#{@link.short_url}"
       redirect_to root_path
     else
-      flash[:error] = "Please enter a valid link!"
-      redirect_to root_path
+      flash.now[:error] = "Please enter a valid link!"
+      render 'new'
     end
   end
   
   def show
     @link = Link.find_and_increment(params[:id])
-    redirect_url = @link.url.match(/^http/) ? @link.url : "http://#{@link.url}"
-    redirect_to redirect_url
+    redirect_to @link.url
   end
   
   def index
@@ -33,9 +31,10 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     if @link.update_attributes(params[:link])
       flash[:messages] = "Link updated successfully!"
+      redirect_to links_path
     else
-      flash[:error] = "Update unsucessful!"
+      flash.now[:error] = "Update unsucessful!"
+      render 'edit'
     end
-    redirect_to links_path
   end
 end

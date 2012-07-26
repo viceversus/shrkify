@@ -1,5 +1,3 @@
-<%= render 'error_messages' %>
-
 <div class="center hero-unit">
 	<h1>Shrkify Your Link!</h1>
 
@@ -7,7 +5,7 @@
 		<div class="center">
 			<%= form_for(@link) do |f| %>
 				<div class="input-append">
-				<%= f.text_field :url, class: "txtbox span4", id: "appendedInputButton" %>
+				<%= f.text_field :url, class: "txtbox span4", id: "appendedInputButton", :placeholder => "Shrkify link here..." %>
 				<%= f.submit "Shrkify", class: "btn btn-large btn-info" %>
 				</div>
 			<% end %>
