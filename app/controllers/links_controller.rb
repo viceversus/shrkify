@@ -1,22 +1,34 @@
 class LinksController < ApplicationController
+  before_filter :find_link, :only => [:show, :edit, :update]
+  
   def new
     @link = Link.new
   end
   
   def create
-    @link = Link.new(params[:link])
+    if current_user
+      @link = current_user.links.build(params[:link])
+    else
+      @link = Link.new(params[:link])
+    end
     if @link.save 
-      flash[:messages] = "Your sharkened url is #{root_url}#{@link.short_url}"
-      redirect_to root_path
+      raise
+      # redirect_to current_user || root_path
+      respond_to do |format|
+        format.html do
+           redirect_to @user
+           flash[:messages] = "Your sharkened url is #{root_url}#{@link.short_url}"
+        end
+        format.js
+      end
     else
       flash.now[:error] = "Please enter a valid link!"
       render 'new'
     end
+
   end
   
   def show
-    @link = Link.find_and_increment(params[:id])
-    redirect_to @link.url
   end
   
   def index
@@ -24,11 +36,9 @@ class LinksController < ApplicationController
   end
   
   def edit
-    @link = Link.find(params[:id])
   end
   
   def update
-    @link = Link.find(params[:id])
     if @link.update_attributes(params[:link])
       flash[:messages] = "Link updated successfully!"
       redirect_to links_path
@@ -37,4 +47,9 @@ class LinksController < ApplicationController
       render 'edit'
     end
   end
+  
+  private
+    def find_link
+      @link = Link.find(params[:id])
+    end
 end

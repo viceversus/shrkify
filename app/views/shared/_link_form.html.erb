@@ -1,0 +1,6 @@
+<%= form_for @link, :remote => true do |f| %>
+	<div>
+	<%= f.text_field :url, class: "txtbox span4", :placeholder => "Shrkify link here..." %> </br>
+	<%= f.submit "Shrkify", class: "btn btn-large btn-info" %>
+	</div>
+<% end %>

@@ -3,12 +3,7 @@
 
 	<div class="row">
 		<div class="center">
-			<%= form_for(@link) do |f| %>
-				<div class="input-append">
-				<%= f.text_field :url, class: "txtbox span4", id: "appendedInputButton", :placeholder => "Shrkify link here..." %>
-				<%= f.submit "Shrkify", class: "btn btn-large btn-info" %>
-				</div>
-			<% end %>
+			<%= render :partial => 'shared/link_form', :locals => { :link => @link } %>
 		</div>
 	</div>
 </div>
