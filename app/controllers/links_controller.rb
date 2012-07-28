@@ -12,11 +12,9 @@ class LinksController < ApplicationController
       @link = Link.new(params[:link])
     end
     if @link.save 
-      raise
-      # redirect_to current_user || root_path
       respond_to do |format|
         format.html do
-           redirect_to @user
+           redirect_to @link.user
            flash[:messages] = "Your sharkened url is #{root_url}#{@link.short_url}"
         end
         format.js

@@ -1,1 +1,2 @@
-$("#link-table").prepend("<%= j render(@link.url)) %>")
+$("#link-table").prepend("<%= escape_javascript(render(:partial => 'shared/link', :locals => { :link => @link })) %>");
+$("#link_url").val("");
