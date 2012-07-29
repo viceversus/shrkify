@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   before_filter :find_link, :only => [:show, :edit, :update]
+  before_filter :validate_user!, :only => [:edit, :update]
   
   def new
     @link = Link.new
@@ -13,10 +14,7 @@ class LinksController < ApplicationController
     end
     if @link.save 
       respond_to do |format|
-        format.html do
-           redirect_to @link.user
-           flash[:messages] = "Your sharkened url is #{root_url}#{@link.short_url}"
-        end
+        format.html { redirect_to @link.user || root_path, :success => "Your sharkened url is #{root_url}#{@link.short_url}" }
         format.js
       end
     else
@@ -39,7 +37,7 @@ class LinksController < ApplicationController
   def update
     if @link.update_attributes(params[:link])
       flash[:messages] = "Link updated successfully!"
-      redirect_to links_path
+      redirect_to current_user || links_path
     else
       flash.now[:error] = "Update unsucessful!"
       render 'edit'
@@ -49,5 +47,9 @@ class LinksController < ApplicationController
   private
     def find_link
       @link = Link.find(params[:id])
+    end
+    
+    def validate_user!
+      redirect_to root_path unless current_user?(@link.user)
     end
 end
